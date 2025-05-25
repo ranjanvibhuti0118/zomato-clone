@@ -1,0 +1,96 @@
+### Create new restaurant
+POST http://localhost:8080/api/v1/restaurants
+Content-Type: application/json
+
+{
+  "name": "Sample Restaurant",
+  "description": "A fine dining restaurant",
+  "cuisine": "Italian",
+  "address": {
+    "streetAddress": "456 Restaurant Ave",
+    "city": "New York",
+    "state": "NY",
+    "zipCode": "10001",
+    "country": "USA"
+  }
+}
+
+### Get restaurant by ID
+GET http://localhost:8080/api/v1/restaurants/{restaurantId}
+
+### Update restaurant
+PUT http://localhost:8080/api/v1/restaurants/{restaurantId}
+Content-Type: application/json
+
+{
+  "name": "Updated Restaurant Name",
+  "description": "Updated description",
+  "cuisine": "Italian",
+  "address": {
+    "streetAddress": "456 Restaurant Ave",
+    "city": "New York",
+    "state": "NY",
+    "zipCode": "10001",
+    "country": "USA"
+  }
+}
+
+### Delete restaurant
+DELETE http://localhost:8080/api/v1/restaurants/{restaurantId}
+
+### Get all restaurants
+GET http://localhost:8080/api/v1/restaurants
+
+### Add menu item
+POST http://localhost:8080/api/v1/restaurants/{restaurantId}/menu-items
+Content-Type: application/json
+
+{
+  "name": "Spaghetti Carbonara",
+  "description": "Classic Italian pasta dish",
+  "price": 15.99,
+  "category": "MAIN_COURSE",
+  "isVegetarian": false
+}
+
+### Search restaurants
+GET http://localhost:8080/api/v1/restaurants/search?name=Italian&cuisine=Italian&location=New York
+
+### Get restaurant menu
+GET http://localhost:8080/api/v1/restaurants/{restaurantId}/menu
+
+### Update restaurant menu
+PUT http://localhost:8080/api/v1/restaurants/{restaurantId}/menu
+Content-Type: application/json
+
+{
+  "items": [
+    {
+      "name": "Spaghetti Carbonara",
+      "description": "Classic Italian pasta dish",
+      "price": 15.99,
+      "category": "MAIN_COURSE"
+    }
+  ]
+}
+
+### Create restaurant menu
+POST http://localhost:8080/api/v1/restaurants/menu
+Content-Type: application/json
+
+{
+  "items": [
+    {
+      "name": "Pizza Margherita",
+      "description": "Traditional Italian pizza",
+      "price": 12.99,
+      "category": "MAIN_COURSE"
+    }
+  ]
+}
+
+### Delete restaurant menu
+DELETE http://localhost:8080/api/v1/restaurants/{restaurantId}/menu/{menuId}
+
+### Deactivate restaurant
+PATCH http://localhost:8080/api/v1/restaurants/{restaurantId}/deactivate

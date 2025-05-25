@@ -1,0 +1,89 @@
+### User Registration and Authentication
+POST http://localhost:8080/api/v1/users/register
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password123",
+  "name": "John Doe"
+}
+
+###
+POST http://localhost:8080/api/v1/users/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+
+### User Profile Management
+GET http://localhost:8080/api/v1/users/me
+
+###
+PUT http://localhost:8080/api/v1/users/me
+Content-Type: application/json
+
+{
+  "name": "John Updated",
+  "email": "john.updated@example.com"
+}
+
+###
+GET http://localhost:8080/api/v1/users/123
+
+### Password Management
+PUT http://localhost:8080/api/v1/users/me/password
+Content-Type: application/json
+
+{
+  "currentPassword": "oldpassword",
+  "newPassword": "newpassword123"
+}
+
+###
+POST http://localhost:8080/api/v1/users/forgot-password
+Content-Type: application/json
+
+{
+  "email": "user@example.com"
+}
+
+###
+POST http://localhost:8080/api/v1/users/reset-password
+Content-Type: application/json
+
+{
+  "token": "reset_token",
+  "newPassword": "newpassword123"
+}
+
+### Address Management
+GET http://localhost:8080/api/v1/users/addresses
+
+###
+POST http://localhost:8080/api/v1/users/addresses
+Content-Type: application/json
+
+{
+  "street": "123 Main St",
+  "city": "Sample City",
+  "state": "State",
+  "zipCode": "12345"
+}
+
+###
+PUT http://localhost:8080/api/v1/users/addresses/123
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "street": "456 Updated St",
+  "city": "Updated City",
+  "state": "State",
+  "zipCode": "54321"
+}
+
+###
+DELETE http://localhost:8080/api/v1/users/addresses/123
+Authorization: Bearer {{auth_token}}
