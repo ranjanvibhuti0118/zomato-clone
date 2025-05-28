@@ -1,0 +1,31 @@
+### Get Cart
+GET http://localhost:8080/api/cart
+Accept: application/json
+
+### Add Item to Cart
+POST http://localhost:8080/api/cart/add
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "restaurantId": 1,
+  "menuItemId": 1,
+  "menuItemName": "Pizza",
+  "quantity": 1,
+  "unitPrice": 10.99
+}
+
+### Update Cart Item
+PUT http://localhost:8080/api/cart/update
+Content-Type: application/json
+
+{
+  "itemId": 1,
+  "quantity": 2
+}
+
+### Remove Item from Cart
+DELETE http://localhost:8080/api/cart/remove/1
+
+### Clear Cart
+DELETE http://localhost:8080/api/cart/clear

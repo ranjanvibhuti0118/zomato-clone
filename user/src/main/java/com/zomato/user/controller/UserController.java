@@ -15,7 +15,7 @@ import com.zomato.user.dto.AddressDTO;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/users")
 @Tag(name = "User Management", description = "APIs for user management operations")
 public class UserController {
 
@@ -23,76 +23,76 @@ public class UserController {
     private UserService userService;
 
     @Operation(summary = "Register new user")
-    @PostMapping("/users/register")
+    @PostMapping("/register")
     public ResponseEntity<UserProfileDTO> registerUser(@Valid @RequestBody UserRegistrationDTO registrationDTO) {
         return ResponseEntity.ok(userService.registerUser(registrationDTO));
     }
 
     @Operation(summary = "Login user")
-    @PostMapping("/users/login")
+    @PostMapping("/login")
     public ResponseEntity<String> loginUser(@Valid @RequestBody UserLoginDTO loginDTO) {
         return ResponseEntity.ok(userService.loginUser(loginDTO));
     }
 
     @Operation(summary = "Get current user profile")
-    @GetMapping("/users/me")
+    @GetMapping("/me")
     public ResponseEntity<UserProfileDTO> getCurrentUser() {
         return ResponseEntity.ok(userService.getCurrentUser());
     }
 
     @Operation(summary = "Update user profile")
-    @PutMapping("/users/me")
+    @PutMapping("/me")
     public ResponseEntity<UserProfileDTO> updateProfile(@Valid @RequestBody UserProfileDTO profileDTO) {
         return ResponseEntity.ok(userService.updateProfile(profileDTO));
     }
 
     @Operation(summary = "Change user password")
-    @PutMapping("/users/me/password")
+    @PutMapping("/me/password")
     public ResponseEntity<Void> changePassword(@Valid @RequestBody String newPassword) {
         userService.changePassword(newPassword);
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Get user by ID")
-    @GetMapping("/users/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<UserProfileDTO> getUserById(@PathVariable Long id) {
         return ResponseEntity.ok(userService.getUserById(id));
     }
 
     @Operation(summary = "Initiate password reset")
-    @PostMapping("/users/forgot-password")
+    @PostMapping("/forgot-password")
     public ResponseEntity<Void> forgotPassword(@RequestParam String email) {
         userService.initiatePasswordReset(email);
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Reset password with token")
-    @PostMapping("/users/reset-password")
+    @PostMapping("/reset-password")
     public ResponseEntity<Void> resetPassword(@RequestParam String token, @RequestParam String newPassword) {
         userService.resetPassword(token, newPassword);
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Get user addresses")
-    @GetMapping("/users/addresses")
+    @GetMapping("/addresses")
     public ResponseEntity<List<AddressDTO>> getUserAddresses() {
         return ResponseEntity.ok(userService.getUserAddresses());
     }
 
     @Operation(summary = "Add new address")
-    @PostMapping("/users/addresses")
+    @PostMapping("/addresses")
     public ResponseEntity<AddressDTO> addAddress(@Valid @RequestBody AddressDTO addressDTO) {
         return ResponseEntity.ok(userService.addAddress(addressDTO));
     }
 
     @Operation(summary = "Update address")
-    @PutMapping("/users/addresses/{id}")
+    @PutMapping("/addresses/{id}")
     public ResponseEntity<AddressDTO> updateAddress(@PathVariable Long id, @Valid @RequestBody AddressDTO addressDTO) {
         return ResponseEntity.ok(userService.updateAddress(id, addressDTO));
     }
 
     @Operation(summary = "Delete address")
-    @DeleteMapping("/users/addresses/{id}")
+    @DeleteMapping("/addresses/{id}")
     public ResponseEntity<Void> deleteAddress(@PathVariable Long id) {
         userService.deleteAddress(id);
         return ResponseEntity.noContent().build();

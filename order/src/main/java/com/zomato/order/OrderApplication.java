@@ -1,4 +1,4 @@
-package com.zomato.restaurant;
+package com.zomato.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class RestaurantApplication {
+public class OrderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(RestaurantApplication.class, args);
+        SpringApplication.run(OrderApplication.class, args);
     }
 
 }
