@@ -52,6 +52,7 @@ public class RestaurantController {
     })
     @GetMapping
     public ResponseEntity<List<Restaurant>> getAllRestaurants() {
+        System.out.println("Fetching all restaurants");
         return ResponseEntity.ok(restaurantService.getAllRestaurants());
     }
 
