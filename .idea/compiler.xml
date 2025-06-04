@@ -11,6 +11,7 @@
         <module name="eureka-server" />
         <module name="restaurant" />
         <module name="order" />
+        <module name="payments" />
       </profile>
     </annotationProcessing>
   </component>
@@ -19,6 +20,7 @@
       <module name="api-gateway" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="order" options="-parameters" />
+      <module name="payments" options="-parameters" />
       <module name="restaurant" options="-parameters" />
       <module name="user" options="-parameters" />
     </option>
